@@ -1,7 +1,7 @@
 import java.math.BigInteger;
 
 public class HTNaive{
-	ListeBigI[] t;
+	private ListeBigI[] t;
 
 	public HTNaive(int m){
 		//pas sûr...
@@ -14,16 +14,15 @@ public class HTNaive{
 
 	public int h(BigInteger u){
 		// h(u) = u % m
-		BigInteger m = BigInteger.valueOf(this.t.length);
-		BigInteger res =  u.mod(m);
-		return res.intValue();
 	}
 
 	public boolean contient(BigInteger u){
 		boolean res = false;
-
-		//vrai SSI u est déjà dans la table
-		
+		for(int i = 0; i < t.length; i++){
+			if(t[i] == u){
+				res = true;
+			}
+		}
 		return res;
 	}
 
@@ -45,12 +44,20 @@ public class HTNaive{
 	}
 
 	public ListeBigI getElements(){
-		//retourne la liste de tous les éléments de la table
+		return this.t;
 	}
 
 	public String toString(){
+		String res="";
+
+		for(int i=0; i < t.length; i++){
+			for(int j=0; j < ; j++){
+				res += "t[" + i + "] : " + t[/* faut modif ici */] + "\n";
+			}
+		}
 		//retourne la chaine sous forme :
 		//t[0] : ... (éléments de la liste 0)
 		//t[1] : ... (éléments de la liste 1)
+		return res;
 	}
 }
