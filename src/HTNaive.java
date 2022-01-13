@@ -14,6 +14,9 @@ public class HTNaive{
 
 	public int h(BigInteger u){
 		// h(u) = u % m
+		BigInteger m = BigInteger.valueOf(this.t.length);
+		BigInteger res =  u.mod(m);
+		return res.intValue();
 	}
 
 	public boolean contient(BigInteger u){
