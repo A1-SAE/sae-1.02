@@ -14,9 +14,6 @@ public class HTNaive{
 
 	public int h(BigInteger u){
 		// h(u) = u % m
-		BigInteger m = BigInteger.valueOf(this.t.length);
-		BigInteger res =  u.mod(m);
-		return res.intValue();
 	}
 
 	public boolean contient(BigInteger u){
@@ -36,7 +33,9 @@ public class HTNaive{
 			res = false;
 		}else{
 			//ajout
-			t[this.h(u)].ajoutFin(u);
+
+			t[h(u)].ajoutFin(u);
+
 			res = true;
 		}
 		return res;
@@ -45,6 +44,15 @@ public class HTNaive{
 	public void ajoutListe(ListeBigI L){
 		//ajoute à la table les éléments de L qui n'y sont pas déjà
 		//L ne doit pas être modifée
+
+		//Début de qq chose à voir par la suite.
+		if(!L.estVide()){
+			Maillon courant = new Maillon();
+			while(L.getSuiv() != null){
+				h(L.getVal());
+				L.getSuiv();
+			}
+		}
 	}
 
 	public ListeBigI getElements(){
