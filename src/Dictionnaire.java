@@ -17,4 +17,32 @@ public class Dictionnaire {
 
         return res;
     }
+
+    public boolean ajout(String s){
+        return this.htn.ajout(Dictionnaire.stringToBigInteger(s));
+    }
+
+    public boolean contient(String s){
+        return this.htn.contient(Dictionnaire.stringToBigInteger(s));
+    }
+
+    public int getCardinal(){
+        return this.htn.getCardinal();
+    }
+
+    public int getMaxSize(){
+        return this.htn.getMaxSize();
+    }
+
+    public int getNbListes(){
+        return this.htn.getNbListes();
+    }
+
+    public String toString(){
+        return this.htn.toString();
+    }
+
+    public String toStringV2(){
+        return this.htn.toStringV2();
+    }
 }
