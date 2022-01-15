@@ -57,6 +57,6 @@ public class TestsMain {
         HTNaive htn5 = new HTNaive(l1, (double) 2);
         System.out.println(htn5);
 
-
+        System.out.println(Dictionnaire.stringToBigInteger("Manger"));
     }
 }
