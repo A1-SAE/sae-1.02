@@ -6,6 +6,9 @@ public class HTNaive{
 
 	public HTNaive(int m){
 		this.t = new ListeBigI[m];
+		for(int i = 0; i < t.length; i++){
+			t[i] = new ListeBigI();
+		}
 	}
 
 	public ListeBigI getListe(int i){
@@ -20,6 +23,8 @@ public class HTNaive{
 
 	public boolean contient(BigInteger u){
 		int pos = this.h(u);
+		if(t[pos].estVide()) return false;
+
 		return this.t[pos].contient(u);
 	}
 
