@@ -1,10 +1,10 @@
 import java.math.BigInteger;
+import java.util.List;
 
 public class HTNaive{
 	private ListeBigI[] t;
 
 	public HTNaive(int m){
-		//pas sûr...
 		this.t = new ListeBigI[m];
 	}
 
@@ -14,58 +14,46 @@ public class HTNaive{
 
 	public int h(BigInteger u){
 		// h(u) = u % m
+		BigInteger m = BigInteger.valueOf(this.t.length);
+		return u.mod(m).intValue();
 	}
 
 	public boolean contient(BigInteger u){
-		boolean res = false;
-		for(int i = 0; i < t.length; i++){
-			if(t[i] == u){
-				res = true;
-			}
-		}
-		return res;
+		int pos = this.h(u);
+		return this.t[pos].contient(u);
 	}
 
 	public boolean ajout(BigInteger u){
-		boolean res = false;
-		if(this.contient(u)){
-			//rien
-			res = false;
-		}else{
-			//ajout
+		if(this.contient(u)) return false;
 
-			t[h(u)].ajoutFin(u);
-
-			res = true;
-		}
-		return res;
+		int pos = this.h(u);
+		this.t[pos].ajoutTete(u);
+		return true;
 	}
 
 	public void ajoutListe(ListeBigI L){
-		//ajoute à la table les éléments de L qui n'y sont pas déjà
-		//L ne doit pas être modifée
+		if(L.estVide()) return;
 
-		//Début de qq chose à voir par la suite.
-		if(!L.estVide()){
-			Maillon courant = new Maillon();
-			while(L.getSuiv() != null){
-				h(L.getVal());
-				L.getSuiv();
-			}
+		ListeBigI recopie = new ListeBigI(L);
+		while(!recopie.estVide()){
+			this.ajout(recopie.supprTete());
 		}
 	}
 
 	public ListeBigI getElements(){
-		return this.t;
+		ListeBigI res = new ListeBigI();
+		for(int i = 0; i < this.t.length; i++){
+			res.ajoutListe(t[i]);
+		}
+
+		return res;
 	}
 
 	public String toString(){
 		String res="";
 
 		for(int i=0; i < t.length; i++){
-			for(int j=0; j < ; j++){
-				res += "t[" + i + "] : " + t[/* faut modif ici */] + "\n";
-			}
+			res += "t[" + i + "] : " + t[i].toString() + "\n";
 		}
 		//retourne la chaine sous forme :
 		//t[0] : ... (éléments de la liste 0)
