@@ -9,16 +9,10 @@ public class Dictionnaire {
 
     public static BigInteger stringToBigInteger(String s){
         char[] lettres = s.toCharArray();
-        int[] ascii = new int[lettres.length];
-        for(int i = 0; i < ascii.length; i++){ // liste des lettres en ascii inversée pour le calcul
-            ascii[i] = lettres[ascii.length - 1 - i];
-        }
 
-        BigInteger res = BigInteger.valueOf(0);
-        BigInteger base = BigInteger.valueOf(1);
-        for(int i = 0; i < ascii.length; i++){
-            res = res.add(base.multiply(BigInteger.valueOf(ascii[i]))) ;
-            base = base.multiply(BigInteger.valueOf(256));
+        BigInteger res = BigInteger.valueOf(lettres[0]);
+        for(int i = 1; i < lettres.length; i++){
+            res = res.multiply(BigInteger.valueOf(256)).add(BigInteger.valueOf(lettres[i]));
         }
 
         return res;
