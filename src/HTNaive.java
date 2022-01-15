@@ -3,12 +3,17 @@ import java.util.List;
 
 public class HTNaive{
 	private ListeBigI[] t;
+	private long totalTimeh;
+	private long totalTimeContient;
 
 	public HTNaive(int m){
 		this.t = new ListeBigI[m];
 		for(int i = 0; i < t.length; i++){
 			t[i] = new ListeBigI();
 		}
+
+		this.totalTimeh = 0;
+		this.totalTimeContient = 0;
 	}
 
 	public HTNaive(ListeBigI l, int m){
@@ -38,15 +43,24 @@ public class HTNaive{
 
 	public int h(BigInteger u){
 		// h(u) = u % m
+		double debut = System.currentTimeMillis();
 		BigInteger m = BigInteger.valueOf(this.t.length);
-		return u.mod(m).intValue();
+		int res = u.mod(m).intValue();
+		double fin = System.currentTimeMillis();
+		this.totalTimeh += fin - debut;
+		return res;
 	}
 
 	public boolean contient(BigInteger u){
+		double debut = System.currentTimeMillis();
 		int pos = this.h(u);
 		if(t[pos].estVide()) return false;
+		boolean result = this.t[pos].contient(u);
 
-		return this.t[pos].contient(u);
+		double fin = System.currentTimeMillis();
+		this.totalTimeContient += fin - debut;
+
+		return result;
 	}
 
 	public boolean ajout(BigInteger u){
@@ -124,5 +138,8 @@ public class HTNaive{
 		return res;
 	}
 
+	public String printTime(){
+		return "total time h : " + this.totalTimeh + "\ntotal time contient : " + this.totalTimeContient;
+	}
 
 }

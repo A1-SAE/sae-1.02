@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Dictionnaire {
-    HTNaive htn;
+    public HTNaive htn;
 
     public Dictionnaire(int m){
         this.htn = new HTNaive(m);
