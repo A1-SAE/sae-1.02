@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.util.Random;
 
 public class TestsMain {
     public static void main(String[] args){
@@ -79,6 +80,28 @@ public class TestsMain {
         /* Q23 */
         /*ListeBigI mots = Dictionnaire.calculeListeInt("randomWordsPetit.txt");
         System.out.println(mots);*/
+
+        /* Q25/26 */
+
+        Dictionnaire d = new Dictionnaire("randomWordsPetit.txt", (double) 1);
+        System.out.println("maxSize : " + d.getMaxSize());
+        System.out.println("cardinal : " + d.getCardinal());
+        System.out.println("nbListes : " + d.getNbListes());
+        int nbRecherches = 100000;
+        long debut=System.currentTimeMillis();
+        for(int i=0;i<nbRecherches;i++) {
+            Random random = new Random();
+            int tailleMot = random.nextInt(15) + 2; //2 <= tailleMot <= 16
+            char[] mot = new char[tailleMot];
+            for (int j = 0; j < mot.length; j++) {
+                mot[j] = (char) ('a' + random.nextInt(26));
+            }
+            String motS = new String(mot);
+            d.contient(motS);//on ne récupère même pas le résultat de la recherche!
+        }
+        long fin=System.currentTimeMillis();
+        System.out.println("temps total : " + (fin-debut));
+
 
 
     }
