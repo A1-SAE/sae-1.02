@@ -83,7 +83,8 @@ public class TestsMain {
 
         /* Q25/26 */
 
-        Dictionnaire d = new Dictionnaire("randomWordsPetit.txt", (double) 1);
+        /*Dictionnaire d = new Dictionnaire("randomWordsMini.txt",.1);
+        System.out.println(d.toString());
         System.out.println("maxSize : " + d.getMaxSize());
         System.out.println("cardinal : " + d.getCardinal());
         System.out.println("nbListes : " + d.getNbListes());
@@ -100,9 +101,7 @@ public class TestsMain {
             d.contient(motS);//on ne récupère même pas le résultat de la recherche!
         }
         long fin=System.currentTimeMillis();
-        System.out.println("temps total : " + (fin-debut));
-
-
+        System.out.println("temps total : " + (fin-debut));*/
 
     }
 }
